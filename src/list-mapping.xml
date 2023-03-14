@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.khadri.hibernate.list.Employee"
+		table="EMPLOYEE1">
+		<id name="empId" column="EMP_ID" type="int">
+			<generator class="increment"></generator>
+		</id>
+		<property name="empName" column="EMP_NAME" type="string"></property>
+		<list name="teaching" table="TEACHING">
+			<key column="EMP_ID" />
+			<list-index column="EMP_NAME" />
+			<element column="TEACHING" type="string" />
+		</list>
+	</class>
+</hibernate-mapping>
