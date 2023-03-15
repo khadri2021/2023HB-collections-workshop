@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import com.khadri.hibernate.session.BasicOperationSession;
 import com.khadri.hibernate.set.map.entity.Country;
 
-public class ClientMain {
+public class CountryMain {
 	public static void main(String[] args) {
 
 		Session session = BasicOperationSession.getSession();
