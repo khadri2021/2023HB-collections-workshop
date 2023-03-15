@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.khadri.hibernate.association.one2one.pk.entity.Employee"
+		table="EMPLOYEE">
+		<id name="empId" column="EMP_ID" type="string">
+			<generator class="uuid" />
+		</id>
+		<property name="empName" column="EMP_NAME" type="string" />
+
+		<one-to-one name="workStation"
+			class="com.khadri.hibernate.association.one2one.pk.entity.WorkStation"
+			cascade="all" />
+	</class>
+	<class name="com.khadri.hibernate.association.one2one.pk.entity.WorkStation"
+		table="WORK_STATION">
+		<id name="workStationId" column="WORK_STATION_ID" type="string">
+			<generator class="foreign" >
+				<param name="property">employee</param>
+			</generator>
+		</id>
+		<property name="workStationFloor" column="WORK_STATION_FLOOR"
+			type="string" />
+		<property name="workStationblock" column="WORK_STATION_BLOCK"
+			type="string" />
+		<one-to-one name="employee"
+			class="com.khadri.hibernate.association.one2one.pk.entity.Employee"
+			constrained="true" />
+	</class>
+
+</hibernate-mapping>

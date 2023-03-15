@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.khadri.hibernate.association.one2many.fk.entity.Employee1" table="EMPLOYEE1">
+		<id name="empId" column="EMP_ID" type="string">
+			<generator class="uuid" />
+		</id>
+		<property name="empName" column="EMP_NAME" type="string" />
+
+		<set name="projects" inverse="true" cascade="all">
+			<key column="PROJECT_ID" not-null="true" />
+			<one-to-many class="com.khadri.hibernate.association.one2many.fk.entity.Projects" />
+		</set>
+	</class>
+
+	<class name="com.khadri.hibernate.association.one2many.fk.entity.Projects" table="PROJECTS">
+		<id name="uuid" column="PROJECT_ID" type="string">
+			<generator class="uuid" />
+		</id>
+		<property name="projectName" column="PROJECT_NAME" type="string" />
+		<property name="projectDuration" column="PROJECT_DURATION" type="string" />
+		<many-to-one name="employee1" column="EMP_ID"
+			class="com.khadri.hibernate.association.one2many.fk.entity.Employee1" not-null="true" />
+
+	</class>
+</hibernate-mapping>
